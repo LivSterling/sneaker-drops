@@ -13,6 +13,7 @@ require('dotenv').config()
 const passport = require('passport')
 
 const Shoe = require('./models/shoe')
+const configDB = require('./config/database.js');
 
 
 
@@ -22,7 +23,7 @@ let db
 
 // configuration ===============================================================
 
-mongoose.connect(process.env.DB_STRING, {
+mongoose.connect(configDB.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -44,7 +45,7 @@ app.use(express.json())
 
 // required for passport
 app.use(session({
-  secret: process.env.SESSION_SECRET,// session secret
+  secret: "sneakerDropsSessionKey",// session secret
   resave: false,
   saveUninitialized: true,
 }))
