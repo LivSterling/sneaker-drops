@@ -13,11 +13,9 @@ require('dotenv').config()
 const passport = require('passport')
 
 const Shoe = require('./models/shoe')
+
+
 const configDB = require('./config/database.js');
-
-
-
-
 
 let db
 
@@ -45,7 +43,7 @@ app.use(express.json())
 
 // required for passport
 app.use(session({
-  secret: "sneakerDropsSessionKey",// session secret
+  secret: "sneakerDropsSessionKey" || process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
 }))
