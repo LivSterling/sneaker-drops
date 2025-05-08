@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sneaker Drops</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Sneaker Drops</h1>
+  <h2>Why you trappin so hard?</h2>
+
+
+  <h3>Upcoming drops</h3>
+  <% if (shoes.length === 0) { %><!--check for 0 movies. Its wild this is just like javascript and html together. Not sure if this violates seperation of concerns tho-->
+    <p>No upcoming drops.</p>
+  <% } else { %>
+  <ul>
+  <% shoes.forEach(shoe => { %> <!--data-id stores the shoe’s MongoDB _id in the HTML so you know which record to update -->
+    <li id="shoe-<%= shoe._id %>"><!--thiis should make the name clickable i hope to god this works -->
+      <a href="<%= shoe.img %>"><span><%= shoe.name %></span></a>
+      <span>Release date: <%= shoe.date %></span>
+      <span>Price: $<%= shoe.price %></span>
+      <span><i class="fa fa-fire" aria-hidden="true"></i></span>
+      <span><%= shoe.hot %></span> <!--this is supposed to post with a 0 next to the fire icon then wen clicked on increase by 1 each  -->
+      <span><i class="fa fa-poop" aria-hidden="true"></i></span>
+      <span><%= shoe.not %></span> <!--this is supposed to post with a 0 next to the poop icon then wen clicked on increase by 1 each time need  -->
+      <span><i class="fa fa-x" aria-hidden="true"></i></span> <!-- need to set an event listener in main js and set functionality for a delete -->
+    </li>
+  <% }) %>
+  </ul>
+  <% } %>
+
+  <h2>Add a New Sneaker Drop</h2>
+
+  <form action="/shoes" method="POST">
+    <input name="name" placeholder="Shoe Name" required />
+    <input name="date" placeholder="Release Date" type="date"/>
+    <input name="price" placeholder="Price" type="number"/>
+    <input name="img" placeholder="Image Link" />
+    <button type="submit">Add</button>
+  </form>
+
+  <script src="main.js"></script>
+
+</body>
+</html>
