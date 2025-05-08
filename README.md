@@ -53,3 +53,7 @@ A full-stack web app that lets sneakerheads track upcoming sneaker releases, sav
 - Implement user roles (e.g., admins, moderators)
 - Add image uploads for sneaker entries
 - Improve mobile responsiveness and styling
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7229eeb2141b05e826f389521ca4ab145eb8a5d8
